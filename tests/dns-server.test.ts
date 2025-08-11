@@ -1,11 +1,11 @@
 import { describe, test, expect } from "bun:test";
-import {  } from "dns2";
+import { } from "dns2";
 
 const resolve = UDPClient();
 
 (async () => {
-  const response = await resolve('google.com')
-  console.log(response.answers);
+    const response = await resolve('google.com')
+    console.log(response.answers);
 })();
 
 describe("DNS Server Tests", () => {

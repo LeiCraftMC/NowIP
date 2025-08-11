@@ -14,34 +14,34 @@ class DNSRecordDB {
     // Add a DNS record
     addRecord(record: DNSRecord): void {
         const normalizedName = record.name.toLowerCase();
-        
+
         if (!this.records.has(normalizedName)) {
             this.records.set(normalizedName, new Map());
         }
-        
+
         const domainRecords = this.records.get(normalizedName)!;
-        
+
         if (!domainRecords.has(record.type)) {
             domainRecords.set(record.type, []);
         }
-        
+
         domainRecords.get(record.type)!.push({ ...record });
     }
 
     // Get records for a specific name and type
     getRecords(name: string, type: number): DNSRecord[] {
         const normalizedName = name.toLowerCase();
-        
+
         if (!this.records.has(normalizedName)) {
             return [];
         }
-        
+
         const domainRecords = this.records.get(normalizedName)!;
-        
+
         if (!domainRecords.has(type)) {
             return [];
         }
-        
+
         return [...domainRecords.get(type)!];
     }
 
@@ -65,22 +65,22 @@ class DNSRecordDB {
     // Remove a record based on a matcher function
     removeRecord(name: string, type: number, matcher: (record: DNSRecord) => boolean): boolean {
         const normalizedName = name.toLowerCase();
-        
+
         if (!this.records.has(normalizedName)) {
             return false;
         }
-        
+
         const domainRecords = this.records.get(normalizedName)!;
-        
+
         if (!domainRecords.has(type)) {
             return false;
         }
-        
+
         const typeRecords = domainRecords.get(type)!;
         const initialLength = typeRecords.length;
-        
+
         domainRecords.set(type, typeRecords.filter(record => !matcher(record)));
-        
+
         return domainRecords.get(type)!.length < initialLength;
     }
 
@@ -113,15 +113,7 @@ const dnsServer = createDNSServer({
 
         const response = Packet.createResponseFromRequest(request);
 
-        if (type === Packet.TYPE.A && name === 'example.com') {
-            response.answers.push({
-                name,
-                type: Packet.TYPE.A,
-                class: Packet.CLASS.IN,
-                ttl: 300,
-                address: '203.0.113.42',
-            });
-        }
+        response.answers.push(...dnsRecordDB.getRecords(name, type));
 
         send(response);
     }
