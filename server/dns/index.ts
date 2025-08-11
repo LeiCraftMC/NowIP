@@ -128,7 +128,7 @@ const dnsServer = createDNSServer({
 dnsServer.listen({
     tcp: {
         address: '::',
-        port: 16033
+        port: 53
     },
     udp: {
         address: '::',
