@@ -1,7 +1,5 @@
 import { ConfigHandler } from "../utils/config";
-import { DBStorage } from "../db";
 import { Logger } from "../utils/logger";
-import { SessionHandler } from "../utils/auth/sessions";
 
 export default defineNitroPlugin(async () => {
 
@@ -16,10 +14,7 @@ export default defineNitroPlugin(async () => {
         Logger.setLogLevel(config.logLevel);
     }
 
-    await DBStorage.init();
+    
     console.log('DB initialized');
-
-    await SessionHandler.init();
-    console.log('Session handler initialized');
 
 });

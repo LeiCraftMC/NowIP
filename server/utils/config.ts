@@ -1,4 +1,3 @@
-import { ControllableAgent } from "../agent-control-service/agent";
 import fs from "fs";
 import { Logger } from "./logger";
 
