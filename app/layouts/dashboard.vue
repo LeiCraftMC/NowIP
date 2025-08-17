@@ -1,9 +1,11 @@
 <template>
-    <div class="app">
+    <div class="app bg-white text-black dark:text-white dark:bg-slate-950">
         <Sidebar class="sidebar">
-            <main class="content">
-                <div class="flex-grow-1">
-                    <slot />
+            <main class="sm:ml-64 content">
+                <div class="p-4 grow-1">
+                    <div class="mt-14">
+                        <slot />
+                    </div>
                 </div>
                 <Footer :withMargin="true" />
             </main>
@@ -13,18 +15,14 @@
 </template>
 
 <script setup lang="ts">
-    import Sidebar from '@/components/Sidebar.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import Footer from '@/components/Footer.vue';
 </script>
 
 <style scoped>
 
 .app {
     font-family: "Rubik", sans-serif;
-    background-color: #0b0c1b;
-    color: white;
-    font-size: 16px;
-    margin: 0;
-    padding: 0; 
     min-height: 100vh;
     word-wrap: break-word;
     display: flex;
@@ -32,7 +30,6 @@
 }
 
 .sidebar {
-    /* margin-top: 6rem; */
     flex-grow: 1;
 
 }
@@ -41,6 +38,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    flex-grow: 1;
 }
-
 </style>
