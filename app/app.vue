@@ -1,10 +1,22 @@
 <template>
-	<div>
+	<div class="app bg-white text-black dark:text-white dark:bg-slate-950">
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
 	</div>
 </template>
+
+<style scoped>
+
+.app {
+    font-family: "Rubik", sans-serif;
+    min-height: 100vh;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+</style>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
