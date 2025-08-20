@@ -21,8 +21,6 @@ defineProps({
 
 <style scoped>
 
-
-
 .legal-paragraph {
 	padding-top: 8px;
     padding-bottom: 8px;
