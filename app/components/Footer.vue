@@ -12,9 +12,9 @@ defineProps({
 <template>
     <footer class="mb-0 bg-white border-t border-gray-200 dark:bg-black dark:border-gray-400" :style="{ marginTop: withMargin ? '50px' : '0px' }">
         <div class="px-4 text-center">
-            <p class="legal-paragraph">     
+            <p class="legal-paragraph">
                 <span class="copyright-text">&copy;  {{ new Date().getFullYear() }} LeiCraft_MC. Alle Rechte vorbehalten</span><br>
-            </p>        
+            </p>
         </div>
     </footer>
 </template>
