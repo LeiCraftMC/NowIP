@@ -1,31 +1,19 @@
 <script lang="ts">
-export const description = "An inset sidebar with secondary navigation."
-export const iframeHeight = "800px"
+import Navbar from '~/components/Navbar.vue';
+
+
 </script>
 
-<script setup lang="ts">
-import AppSidebar from '@/components/AppSidebar.vue'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import { Separator } from '@/components/ui/separator'
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from '@/components/ui/sidebar'
-</script>
+
 
 <template>
-  <SidebarProvider>
-    <AppSidebar />
-    <SidebarInset>
-      <slot />
-    </SidebarInset>
-  </SidebarProvider>
+
+    <Navbar></Navbar>
+
+    <div class="container mx-auto flex h-full max-w-7xl flex-col gap-4 px-4 py-8">
+
+        <slot />
+
+    </div>
+
 </template>
