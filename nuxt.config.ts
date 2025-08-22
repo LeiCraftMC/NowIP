@@ -4,21 +4,20 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 	devtools: { enabled: true },
-
 	ssr: true,
 
 	app: {
-		head: {
-			charset: "utf-8",
-			viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-			link: [
-				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-				{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap" },
+		// head: {
+		// 	charset: "utf-8",
+		// 	viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+		// 	link: [
+		// 		{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+		// 		{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+		// 		{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap" },
 
-				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-			]
-		}
+		// 		{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+		// 	]
+		// }
 	},
 
 	vite: {
@@ -29,10 +28,23 @@ export default defineNuxtConfig({
 
 	css: [
 		'~/assets/css/global.css',
+		'~/assets/css/tailwind.css'
 	],
 
 	nitro: {
 		preset: 'bun'
-	}
+	},
 
+	modules: ["shadcn-nuxt"],
+	shadcn: {
+		/**
+		 * Prefix for all the imported component
+		 */
+		prefix: '',
+		/**
+		 * Directory that the component lives in.
+		 * @default "./components/ui"
+		 */
+		componentDir: './app/components/ui'
+	}
 });
