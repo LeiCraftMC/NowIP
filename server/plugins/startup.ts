@@ -3,18 +3,18 @@ import { Logger } from "../utils/logger";
 
 export default defineNitroPlugin(async () => {
 
-	const config = await ConfigHandler.loadConfig();
-    if (!config) {
-        Logger.error("Error getting config");
-        process.exit(1);
-    }
-	Logger.log('Config loaded');
+	// const config = await ConfigHandler.loadConfig();
+    // if (!config) {
+    //     Logger.error("Error getting config");
+    //     process.exit(1);
+    // }
+	// Logger.log('Config loaded');
 
-    if (config.logLevel) {
-        Logger.setLogLevel(config.logLevel);
-    }
+    // if (config.logLevel) {
+    //     Logger.setLogLevel(config.logLevel);
+    // }
 
     
-    console.log('DB initialized');
+    Logger.log('DB initialized');
 
 });

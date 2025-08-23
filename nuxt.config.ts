@@ -1,4 +1,3 @@
-import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -8,24 +7,30 @@ export default defineNuxtConfig({
 	ssr: true,
 
 	app: {
-		head: {
-			charset: "utf-8",
-			viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-			link: [
-				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-				{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap" },
+        head: {
+            charset: "utf-8",
+            viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+            link: [
+                {
+                    rel: 'stylesheet',
+                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css'
+                },
+                { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css' },
+                { rel: "preconnect", href: "https://fonts.googleapis.com" },
+                { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+                { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" },
 
-				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-			]
-		}
-	},
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+            ],
+            script: [
+                {
+                    src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js',
+                    tagPosition: 'bodyClose'
+                }
+            ]
 
-	vite: {
-		plugins: [
-			tailwindcss()
-		]
-	},
+        }
+    },
 
 	css: [
 		'~/assets/css/global.css',
@@ -35,18 +40,11 @@ export default defineNuxtConfig({
 		preset: 'bun'
 	},
 
-	modules: ["shadcn-nuxt"],
-
-	shadcn: {
-		/**
-		* Prefix for all the imported component
-		*/
-		prefix: '',
-		/**
-		* Directory that the component lives in.
-		* @default "./components/ui"
-		*/
-		componentDir: './components/ui'
+	runtimeConfig: {
+		pocketbaseApiKey: process.env.POCKETBASE_API_KEY,
+		public: {
+			pocketbaseUrl: process.env.POCKETBASE_URL || 'http://127.0.0.1:8090'
+		}
 	}
 
 });

@@ -30,7 +30,7 @@ export class ConfigHandler {
 			return this.config;
 
 		} catch (error) {
-			console.error("Error loading config file:", error);
+			Logger.error("Error loading config file:", error);
 			process.exit(1);
 		}
 	}
