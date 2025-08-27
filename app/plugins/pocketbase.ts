@@ -13,10 +13,10 @@ export default defineNuxtPlugin(async () => {
     })
 
     // load the store data from the cookie value
-    pb.authStore.save(cookie.value?.token, cookie.value?.record);
+    pb.authStore.save((cookie.value as any)?.token, (cookie.value as any).record);
 
     // send back the default 'pb_auth' cookie to the client with the latest store state
-    pb.authStore.onChange(() => {
+    pb.authStore.onChange(() => { //@ts-ignore
         cookie.value = {
             token: pb.authStore.token,
             record: pb.authStore.record,
