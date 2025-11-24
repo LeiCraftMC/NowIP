@@ -1,4 +1,4 @@
-# Nuxt Minimal Starter
+# This Repo is Obsolete! Source Code is Now under https://git.leicraftmc.de/NowIP and https://github.com/NowIP (mirror)
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
